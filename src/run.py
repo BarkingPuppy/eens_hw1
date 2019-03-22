@@ -8,7 +8,6 @@ user_id, user_pwd = 'root', '123456'
 db_conn = MongoClient('mongodb://{}:{}@mongo:27017/admin'.format(user_id, user_pwd))
 db = db_conn['admin']['user']
 # print(db.list_collection_names())
-print('its working')
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     error = None
@@ -69,7 +68,3 @@ def home():
         session.pop('user_id')
         return redirect(url_for('login'))
     return render_template('index.html')
-
-# if __name__ == "__main__":
-#     app.run(host='0.0.0.0', port=8888, debug=True)  # when using docker 
-#     # app.run(port=8888, debug=True)  # when using python3 app.py

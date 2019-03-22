@@ -28,3 +28,18 @@
 2019/03/22 20:34:03 [error] 6#6: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.1.101, server: localhost, request: "GET / HTTP/1.1", upstream: "http://0.0.0.0:5000/", host: "192.168.1.102"
 2019/03/22 22:02:37 [error] 6#6: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 172.21.0.1, server: localhost, request: "GET / HTTP/1.1", upstream: "http://0.0.0.0:5000/", host: "127.0.0.1"
 2019/03/22 22:02:37 [error] 6#6: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 172.21.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", upstream: "http://0.0.0.0:5000/favicon.ico", host: "127.0.0.1", referrer: "http://127.0.0.1/"
+2019/03/22 23:01:31 [emerg] 1#1: unexpected "}" in /etc/nginx/nginx.conf:7
+2019/03/22 23:01:32 [emerg] 1#1: unexpected "}" in /etc/nginx/nginx.conf:7
+2019/03/22 23:01:33 [emerg] 1#1: unexpected "}" in /etc/nginx/nginx.conf:7
+2019/03/22 23:01:35 [emerg] 1#1: unexpected "}" in /etc/nginx/nginx.conf:7
+2019/03/22 23:01:36 [emerg] 1#1: unexpected "}" in /etc/nginx/nginx.conf:7
+2019/03/22 23:01:38 [emerg] 1#1: unexpected "}" in /etc/nginx/nginx.conf:7
+2019/03/22 23:02:20 [emerg] 1#1: no "events" section in configuration
+2019/03/22 23:02:21 [emerg] 1#1: no "events" section in configuration
+2019/03/22 23:02:22 [emerg] 1#1: no "events" section in configuration
+2019/03/22 23:02:23 [emerg] 1#1: no "events" section in configuration
+2019/03/22 23:02:24 [emerg] 1#1: no "events" section in configuration
+2019/03/22 23:02:59 [error] 6#6: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 172.21.0.1, server: , request: "GET / HTTP/1.1", upstream: "http://127.0.0.1:5000/", host: "127.0.0.1"
+2019/03/22 23:02:59 [error] 6#6: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 172.21.0.1, server: , request: "GET /favicon.ico HTTP/1.1", upstream: "http://127.0.0.1:5000/favicon.ico", host: "127.0.0.1", referrer: "http://127.0.0.1/"
+2019/03/22 23:04:20 [error] 6#6: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 172.21.0.1, server: , request: "GET / HTTP/1.1", upstream: "http://127.0.0.1:5000/", host: "127.0.0.1"
+2019/03/22 23:04:20 [error] 6#6: *1 connect() failed (111: Connection refused) while connecting to upstream, client: 172.21.0.1, server: , request: "GET /favicon.ico HTTP/1.1", upstream: "http://127.0.0.1:5000/favicon.ico", host: "127.0.0.1", referrer: "http://127.0.0.1/"
