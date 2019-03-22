@@ -4,5 +4,5 @@ ENV WORKDIR /usr/local/work
 RUN mkdir -p $WORKDIR
 ADD ./setup.sh $SETUP_DIR/
 EXPOSE 27017
-RUN chmod 777 $SETUP_DIR/setup.sh
+RUN chmod +x $SETUP_DIR/setup.sh
 # RUN $SETUP_DIR/setup.sh
