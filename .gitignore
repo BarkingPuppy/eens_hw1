@@ -1,2 +1,2 @@
-./docker-file/nginx/log
-./**/__pycache__
+./docker-file/nginx/log/*
+./**/__pycache__/*
