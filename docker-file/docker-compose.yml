@@ -3,30 +3,36 @@ services:
   mongo:
     image: mongo
     restart: always
-
     environment:
+      # set the username for the root account in mongodb
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: 123456
+      # set the timezone in mongodb
       TZ: "Asia/Taipei"
       
   flask:
     build: ./flask
+    # set links so we can access our database, which is in another container
     links:
       - "mongo"
-
+    # expose port 5000 dso it can be accessed by the server
     expose:
       - "5000"
-
+    # mount the source directory to container's working directory
     volumes:
-      - ../src:/home/web
-  nginx:
-      build: ./nginx
-      links:
-        - flask
-      volumes:
-        - "./nginx/log:/var/log/nginx"
-        - "../:/usr/share/nginx/html"
-      ports:
-        - "80:80"
+    - ../src:/home/web
 
-      restart: always
+  nginx:
+    build: ./nginx
+    # set links to our web app in another container
+    links:
+      - flask 
+    # mount the paths
+    volumes:
+      - "./nginx/log:/var/log/nginx"
+      - "../:/usr/share/nginx/html"
+    # set port forwarding options so we can access server in the container from the host
+    ports:
+      - "80:80"
+
+    restart: always
