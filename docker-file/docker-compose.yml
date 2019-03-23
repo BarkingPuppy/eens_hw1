@@ -3,9 +3,12 @@ services:
   mongo:
     image: mongo
     restart: always
+
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: 123456
+      TZ: "Asia/Taipei"
+      
   flask:
     build: ./flask
     links:
