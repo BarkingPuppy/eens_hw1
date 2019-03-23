@@ -8,7 +8,8 @@ user_id, user_pwd = 'root', '123456'
 db_conn = MongoClient(
     'mongodb://{}:{}@mongo:27017/admin'.format(user_id, user_pwd))
 db = db_conn['admin']['user']
-# print(db.list_collection_names())
+
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     error = None
