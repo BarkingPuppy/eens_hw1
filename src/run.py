@@ -5,7 +5,8 @@ from pymongo import MongoClient
 app = Flask(__name__)
 app.secret_key = 'A_unique_and_secret_key'
 user_id, user_pwd = 'root', '123456'
-db_conn = MongoClient('mongodb://{}:{}@mongo:27017/admin'.format(user_id, user_pwd))
+db_conn = MongoClient(
+    'mongodb://{}:{}@mongo:27017/admin'.format(user_id, user_pwd))
 db = db_conn['admin']['user']
 # print(db.list_collection_names())
 @app.route('/login', methods=['GET', 'POST'])
@@ -17,8 +18,8 @@ def login():
         user_id = request.form['username']
         user_pwd = request.form['password']
         find_result = db.find_one({
-                'user_id': user_id
-            })
+            'user_id': user_id
+        })
         if find_result is not None:
             if find_result['user_pwd'] == user_pwd:
                 session['user_id'] = user_id
@@ -26,11 +27,12 @@ def login():
             else:
                 error = 'Incorrect password. Please try again.'
         else:
-            error = 'Unknown username. Please try again.'
+            error = 'Unknown username. Do you want to register a new account?'
     elif request.method == 'GET':
         if 'user_id' in session:
             return redirect(url_for('home'))
     return render_template('login.html', error=error)
+
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -58,6 +60,7 @@ def register():
                 })
                 success = True
     return render_template('register.html', error=error, success=success)
+
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
