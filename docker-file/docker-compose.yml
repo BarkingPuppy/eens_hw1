@@ -1,10 +1,15 @@
+####################
+# Purpose:
+# Use Docker-compose & Dockerfile to create a LNMP(Linux, Nginx, MongoDB, Python+Flask) environment
+# with a login & register database system.
+####################
 version: '2'
 services:
   mongo:
     image: mongo
     restart: always
     environment:
-      # set the username for the root account in mongodb
+      # set the username & password for the root account in MongoDB
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: 123456
       # set the timezone in mongodb
@@ -15,7 +20,7 @@ services:
     # set links so we can access our database, which is in another container
     links:
       - "mongo"
-    # expose port 5000 dso it can be accessed by the server
+    # expose port 5000 so it can be accessed by Nginx server
     expose:
       - "5000"
     # mount the source directory to container's working directory
@@ -24,6 +29,7 @@ services:
 
   nginx:
     build: ./nginx
+    restart: always
     # set links to our web app in another container
     links:
       - flask 
@@ -34,5 +40,3 @@ services:
     # set port forwarding options so we can access server in the container from the host
     ports:
       - "80:80"
-
-    restart: always

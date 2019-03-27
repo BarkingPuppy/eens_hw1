@@ -5,12 +5,11 @@ from pymongo import MongoClient
 app = Flask(__name__)
 # we must assign a secret key to use flask's session
 app.secret_key = 'A_unique_and_secret_key'
-# connect to our database in the mongo container and login as root
+# connect to default database "admin" in the mongo container and login as root
 user_id, user_pwd = 'root', '123456'
 db_conn = MongoClient(
     'mongodb://{}:{}@mongo:27017/admin'.format(user_id, user_pwd))
 db = db_conn['admin']['user']
-
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -34,9 +33,7 @@ def login():
                 error = 'Incorrect password. Please try again.'
         else:
             error = 'Unknown username. Do you want to register a new account?'
-
     return render_template('login.html', error=error)
-
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -49,6 +46,7 @@ def register():
         user_id = request.form['username']
         user_pwd = request.form['password']
         confirm_pwd = request.form['confirm_password']
+        # Handle all exception
         if user_id == '' or user_pwd == '':
             error = 'Please enter your username and password!'
         elif user_pwd != confirm_pwd:
@@ -66,7 +64,6 @@ def register():
                 })
                 success = True
     return render_template('register.html', error=error, success=success)
-
 
 @app.route('/', methods=['GET', 'POST'])
 def home():

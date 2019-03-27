@@ -1,8 +1,11 @@
+<!DOCTYPE html>
+<!-- 使用Jinja2 Template配合flask套件進行template rendering-->
 <html>
 
 <head>
-    <title>EENS WINKYFAC3</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EENS WINKYFAC3</title>
 </head>
 
 <body>
@@ -22,6 +25,7 @@
             <button class="btn btn-default" type="submit">Register</button>
         </form>
         {% endif %}
+        <!-- 若註冊失敗（使用者已經存在或兩次密碼不同），顯示錯誤訊息 -->
         {% if error %}
         <p class="error"><strong>Error:</strong> {{ error }}</p>
         {% endif %}
